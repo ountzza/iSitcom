@@ -20,7 +20,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
-public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
+public class MainActivity extends ActionBarActivity implements ActionBar.TabListener, ItemFragmentComedy.OnFragmentInteractionListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -130,6 +130,11 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
     }
 
+    @Override
+    public void onFragmentInteraction(String id) {
+
+    }
+
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
@@ -144,7 +149,16 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+           // return PlaceholderFragment.newInstance(position + 1);
+            switch (position) {
+                case 0:
+                    return ItemFragmentComedy.newInstance("PonddA1","PonddA2");
+                case 1:
+                    return ItemFragmentComedy.newInstance("PonddB1","PonddB2");
+                case 2:
+                    return ItemFragmentComedy.newInstance("PonddC1","PonddC2");
+            }
+            return null;
         }
 
         @Override
